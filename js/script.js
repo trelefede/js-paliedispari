@@ -1,6 +1,6 @@
 console.log('js ok');
 
-
+// PALINDROMO
 document.getElementById("button-palindromo").addEventListener("click", function () {
     console.log('Mi hai cliccato');
 
@@ -29,3 +29,69 @@ function isPalindroma(str) {
     }
 }
 
+
+
+// PARI O DISPARI
+let writeResult = document.getElementById("result-pari-dispari");
+
+document.getElementById("button-pari").addEventListener("click", function () {
+    btnPari = 1;
+    console.log('user sceglie pari')
+    document.getElementById("user-scelta").innerHTML = 'User sceglie pari';
+    if (btnPari === ex()) {
+        writeResult.innerHTML = 'User vince';
+    } else {
+        writeResult.innerHTML = 'Pc vince';
+    }
+})
+
+document.getElementById("button-dispari").addEventListener("click", function () {
+    btnDispari = 0;
+    console.log('user sceglie dispari')
+    document.getElementById("user-scelta").innerHTML = 'User sceglie dispari';
+    const funcEx = ex();
+    if (btnDispari === funcEx) {
+        writeResult.innerHTML = 'User vince';
+    } else {
+        writeResult.innerHTML = 'Pc vince';
+    }
+})
+
+
+
+function ex() {
+    document.getElementById("button-gioca").addEventListener("click", function () {
+        const userNum = parseInt(document.getElementById("numero-inserito").value);
+        console.log(userNum);
+
+        if (!isNaN(userNum) && userNum >= 1 && userNum <= 5) {
+            const pcNum = getRandomNum(1, 5);
+            console.log('numero random pc', pcNum);
+
+            const sum = pcNum + userNum;
+            console.log('somma numero user e pc', sum);
+
+            const oddEven = isOddOrEven(sum);
+            console.log(oddEven);
+
+            return oddEven;
+
+        } else {
+            return writeResult.innerHTML = 'Valore inserito non valido';
+        }
+    })
+}
+
+function getRandomNum(min, max) {
+
+    const range = max - min;
+    const random = Math.floor(Math.random() * range) + 1;
+
+    return random;
+}
+
+function isOddOrEven(value) {
+
+    return (value % 2 === 0) ? 1 : 0;
+
+}
