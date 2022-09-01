@@ -32,66 +32,55 @@ function isPalindroma(str) {
 
 
 // PARI O DISPARI
-let writeResult = document.getElementById("result-pari-dispari");
+// L’utente sceglie pari o dispari e inserisce un numero da 1 a 5.
+// Generiamo un numero random (sempre da 1 a 5) per il computer (usando una funzione).
+// Sommiamo i due numeri
+// Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione)
+// Dichiariamo chi ha vinto.
 
-document.getElementById("button-pari").addEventListener("click", function () {
-    btnPari = 1;
-    console.log('user sceglie pari')
-    document.getElementById("user-scelta").innerHTML = 'User sceglie pari';
-    if (btnPari === ex()) {
-        writeResult.innerHTML = 'User vince';
-    } else {
-        writeResult.innerHTML = 'Pc vince';
-    }
-})
+let userChoice = prompt("Scegli Pari o Dispari:");
 
-document.getElementById("button-dispari").addEventListener("click", function () {
-    btnDispari = 0;
-    console.log('user sceglie dispari')
-    document.getElementById("user-scelta").innerHTML = 'User sceglie dispari';
-    const funcEx = ex();
-    if (btnDispari === funcEx) {
-        writeResult.innerHTML = 'User vince';
-    } else {
-        writeResult.innerHTML = 'Pc vince';
-    }
-})
+// ciclo while per controllare che venga inserita una parola e che sia o pari o dispri
+// if (userChoice !== 'pari' || userChoice !== 'dispari') {
+//     userChoice = prompt("Scegli Pari o cane:");
+// }
+console.log('User ha scelto:', userChoice);
 
-
-
-function ex() {
-    document.getElementById("button-gioca").addEventListener("click", function () {
-        const userNum = parseInt(document.getElementById("numero-inserito").value);
-        console.log(userNum);
-
-        if (!isNaN(userNum) && userNum >= 1 && userNum <= 5) {
-            const pcNum = getRandomNum(1, 5);
-            console.log('numero random pc', pcNum);
-
-            const sum = pcNum + userNum;
-            console.log('somma numero user e pc', sum);
-
-            const oddEven = isOddOrEven(sum);
-            console.log(oddEven);
-
-            return oddEven;
-
-        } else {
-            return writeResult.innerHTML = 'Valore inserito non valido';
-        }
-    })
+// inserimento numero utente e controllo numero inserito
+let userNum = parseInt(prompt("Inserisci un numero tra 1 e 5:"));
+while (isNaN(userNum) || userNum < 1 || userNum > 5) {
+    userNum = parseInt(prompt("Inserisci un numero tra 1 e 5:"));
 }
 
+// generiamo numero random da 1 a 5 per il computer
+const pcNum = getRandomNum(1, 5);
+console.log('Numero random PC:', pcNum);
+
+// sommiamo il numero scelto dall'utente e il numero random per il pc
+const sum = userNum + pcNum;
+console.log('La somma è:', sum);
+
+// la somma è pari o dispari?
+const oddOrEven = isOddOrEven(sum) ? 'pari' : 'dispari';
+console.log('Vince:', oddOrEven);
+
+
+
+
+
+// FUNZIONI
+//funzione numero random
 function getRandomNum(min, max) {
 
     const range = max - min;
-    const random = Math.floor(Math.random() * range) + 1;
+    const random = Math.floor(Math.random() * range) + min;
 
     return random;
 }
 
+// funzione pari o dispari
 function isOddOrEven(value) {
 
-    return (value % 2 === 0) ? 1 : 0;
+    return (value % 2 === 0); //mi ritorna true o false
 
 }
