@@ -11,7 +11,7 @@ document.getElementById("button-palindromo").addEventListener("click", function 
     document.getElementById("result-palindromo").innerHTML = result;
 })
 
-
+// FUNZIONE
 function isPalindroma(str) {
     // trasformo tutta la stringa in lettere minuscole
     let lowerStr = str.toLowerCase();
@@ -38,16 +38,20 @@ function isPalindroma(str) {
 // Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione)
 // Dichiariamo chi ha vinto.
 
-let userChoice = prompt("Scegli Pari o Dispari:");
+
+let userChoice = '';
 
 // ciclo while per controllare che venga inserita una parola e che sia o pari o dispri
-// while (userChoice !== 'pari' || userChoice !== 'dispari') {
-//     userChoice = prompt("Scegli Pari o cane:");
-// }
+while (userChoice !== "pari" && userChoice !== "dispari") {
+    userChoice = prompt("Scegli Pari o Dispari:");
+    if (userChoice !== undefined) {
+        userChoice = userChoice.toLowerCase();
+    }
+}
 console.log('User ha scelto:' + userChoice);
 
 // inserimento numero utente e controllo numero inserito
-let userNum = parseInt(prompt("Inserisci un numero tra 1 e 5:"));
+let userNum = 0;
 while (isNaN(userNum) || userNum < 1 || userNum > 5) {
     userNum = parseInt(prompt("Inserisci un numero tra 1 e 5:"));
 }
