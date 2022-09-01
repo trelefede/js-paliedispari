@@ -41,16 +41,18 @@ function isPalindroma(str) {
 let userChoice = prompt("Scegli Pari o Dispari:");
 
 // ciclo while per controllare che venga inserita una parola e che sia o pari o dispri
-// if (userChoice !== 'pari' || userChoice !== 'dispari') {
+// while (userChoice !== 'pari' || userChoice !== 'dispari') {
 //     userChoice = prompt("Scegli Pari o cane:");
 // }
-console.log('User ha scelto:', userChoice);
+console.log('User ha scelto:' + userChoice);
 
 // inserimento numero utente e controllo numero inserito
 let userNum = parseInt(prompt("Inserisci un numero tra 1 e 5:"));
 while (isNaN(userNum) || userNum < 1 || userNum > 5) {
     userNum = parseInt(prompt("Inserisci un numero tra 1 e 5:"));
 }
+console.log('User ha scelto il numero' + userNum);
+
 
 // generiamo numero random da 1 a 5 per il computer
 const pcNum = getRandomNum(1, 5);
@@ -62,9 +64,10 @@ console.log('La somma è:', sum);
 
 // la somma è pari o dispari?
 const oddOrEven = isOddOrEven(sum) ? 'pari' : 'dispari';
-console.log('Vince:', oddOrEven);
+console.log('La somma è:', oddOrEven);
 
-
+// in base alla scelta dell'utente vediamo chi ha vinto
+const winner = console.log((oddOrEven === userChoice) ? 'Utente vince' : 'Pc vince');
 
 
 
